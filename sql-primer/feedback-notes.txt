@@ -1,0 +1,13 @@
+0. Set up freetds on KLC
+
+1. Overview for why we need RDB/SQL
+  a. Relational data on KDC/WRDS
+  b. Your own data may need to be in this form in the future
+
+2. Come up with a good database example and put on KDC (TAXI_NYC?)
+
+3. SQL Primer (introductory slide -> go through code examples)
+
+4. Talk about SQL in a programming language (use R, keep Stata/Python as file examples)
+
+5. Perhaps foreshadow a use case in future lecture
