@@ -124,7 +124,7 @@ AND (t.pickup_datetime = f.[ pickup_datetime]) ///
 odbc load, dsn("kdc-tds") user("`usern'") password("`passw'") exec("`odcmd'")
 describe
 
-import delimited using /kellogg/proj/awc6034/Training/Workshop_2020/taxi_trip.csv
+import delimited using taxi_trip.csv
 
 *-----------------------------
 * 2.) Reformat the Taxi Data 
@@ -157,7 +157,7 @@ save taxi.dta
 clear
 
 * c.) Merge Taxi data with Weather Data
-import delimited using /kellogg/proj/awc6034/Training/Workshop_2020/weather.csv
+import delimited using weather.csv
 rename v1 pickup_date
 rename v2 condition
 
