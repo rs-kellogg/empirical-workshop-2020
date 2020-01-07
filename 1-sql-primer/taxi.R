@@ -21,7 +21,7 @@ rm(list=ls())
 # Install Packages
 #install.packages("RODBC")
 #install.packages("getPass")
-Sys.setenv(ODBCSYSINI = '/home/awc6034/.odbc')
+Sys.setenv(ODBCSYSINI = '/home/<your_netID>/.odbc')
 
 
 # Establish an ODBC connection
@@ -29,8 +29,8 @@ library(RODBC)
 library(getPass)
 passwordAC <- getPass()
 
-conn <- odbcConnect("kdc-tds", uid="kellogg\\awc6034", pwd=passwordAC)
-rm(passwordAC)
+conn <- odbcConnect("kdc-tds", uid="kellogg\\awc6034", pwd=your_password)
+rm(your_password)
 
 # Preview the Data: Number of Observations in the Trip and Fare databases 
 taxi_fare_count <- sqlQuery(conn, "SELECT COUNT(*) FROM TAXI_NYC.dbo.SRC_FareData")
@@ -74,9 +74,7 @@ query2 <-
 
 taxi <- sqlQuery(conn, gsub("\\n\\s+", " ", query2), max = 1000)
 
-# Just in case the query takes too long
-taxi <- read.csv(file="/kellogg/proj/awc6034/Training/Fellows/KDC/taxi_trip.csv", 
-                 header=TRUE, sep=",")
+
 
 #####################################
 # 2.) Reformat the Taxi Data
