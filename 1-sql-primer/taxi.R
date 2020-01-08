@@ -29,7 +29,7 @@ library(RODBC)
 library(getPass)
 passwordAC <- getPass()
 
-conn <- odbcConnect("kdc-tds", uid="kellogg\\awc6034", pwd=your_password)
+conn <- odbcConnect("kdc-tds", uid="kellogg\\<your_netID>", pwd=your_password)
 rm(your_password)
 
 # Preview the Data: Number of Observations in the Trip and Fare databases 
