@@ -1,6 +1,6 @@
 *##########################################*
 *### SQL Primer: Taxi Trip Data Example ###*
-*###     Accessing KDC Data from R      ###*
+*###     Accessing KDC Data from STATA  ###*
 *##########################################*
 
 *# Main Questions: Are Taxi Rides Faster on Sunny Days?
@@ -10,16 +10,26 @@
 *#     a. Separate Dropoff_DateTime into 2 variables for date and time
 *#     b. Calculate a variable for trip_MPS (Miles per Second)
 *#     c. Merge taxi data with weather data (not on KDC)
-*# 3.) Run a Linear Regression
-*# 4.) Plot the data
+*# 3.) Run a Linear Regression and plot the data
+
+*---------------------------------------------
+* Connecting on KLC
+
+* From a GNOME terminal session on FastX, type the following:
+* export ODBCSYSINI=~/.odbc/
+* module load stata/15
+* xstata-mp
 
 *---------------------------------------------
 * clear workspace
 clear
 
 * Create a login.do file within your home directory 
-* local usern "kellogg\<net_id>"
-* local passw "<net id password>"
+*local usern "kellogg\<your_netID>"
+*local passw "<your_password>"
+
+* To see the contents of an object
+*display "`passw'"
 
 *------------------------------------------------------------------
 * 1.) Import Taxi Data and Run General Queries (Select Statements)
@@ -28,6 +38,7 @@ clear
 * run password file and clear results screen
 do "~/login.do"
 cls
+
 
 * setup ODBC connection for a general query
 set odbcmgr unixodbc
@@ -71,17 +82,13 @@ describe
 drop _all
 
 
-* combine the tables (what happened?)
+* combine the tables for trips on 5/20/13
 local odcmd ///
 SELECT TOP(1000) ///
 t.hack_license, ///
-f.[ hack_license], ///
 t.medallion, ///
-f.medallion, ///
 t.vendor_id, ///
-f.[ vendor_id], ///
 t.pickup_datetime, ///
-f.[ pickup_datetime], ///
 t.dropoff_datetime, ///
 t.trip_distance, ///
 t.trip_time_in_secs, ///
@@ -90,25 +97,27 @@ f.[ fare_amount] ///
 FROM TAXI_NYC.dbo.SRC_TripData as t ///
 LEFT OUTER JOIN TAXI_NYC.dbo.SRC_FareData as f ///
 ON (t.hack_license = f.[ hack_license]) ///
-AND (t.medallion = f.medallion) ///
+AND (t.medallion = f.[medallion]) ///
 AND (t.vendor_id = f.[ vendor_id]) ///
 AND (t.pickup_datetime = f.[ pickup_datetime]) ///
+WHERE t.pickup_datetime LIKE '2013-05-20%' ///
+ORDER BY t.pickup_datetime ///
 
 * establish connection to run query
 odbc load, dsn("kdc-tds") user("`usern'") password("`passw'") exec("`odcmd'")
 describe
 
-* Explanation of Error: https://www.stata.com/statalist/archive/2011-06/msg00265.html
+tempfile taxi1
+save taxi1.dta, replace
+clear
 
-* remove duplicated variable
+* combine the tables for trips on 6/20/13
 local odcmd ///
 SELECT TOP(1000) ///
 t.hack_license, ///
-f.[ hack_license], ///
+t.medallion, ///
 t.vendor_id, ///
-f.[ vendor_id], ///
 t.pickup_datetime, ///
-f.[ pickup_datetime], ///
 t.dropoff_datetime, ///
 t.trip_distance, ///
 t.trip_time_in_secs, ///
@@ -117,14 +126,22 @@ f.[ fare_amount] ///
 FROM TAXI_NYC.dbo.SRC_TripData as t ///
 LEFT OUTER JOIN TAXI_NYC.dbo.SRC_FareData as f ///
 ON (t.hack_license = f.[ hack_license]) ///
+AND (t.medallion = f.[medallion]) ///
 AND (t.vendor_id = f.[ vendor_id]) ///
 AND (t.pickup_datetime = f.[ pickup_datetime]) ///
+WHERE t.pickup_datetime LIKE '2013-06-20%' ///
+ORDER BY t.pickup_datetime ///
 
 * establish connection to run query
 odbc load, dsn("kdc-tds") user("`usern'") password("`passw'") exec("`odcmd'")
 describe
 
-import delimited using taxi_trip.csv
+* combine taxi data for two dates
+append using taxi1.dta
+destring , replace
+
+drop _all
+import delimited using taxi_backup.csv
 
 *-----------------------------
 * 2.) Reformat the Taxi Data 
@@ -150,10 +167,10 @@ rename dropoff2 dropoff_time
 gen trip_MPH = trip_distance/((trip_time_in_secs/60)/60)
 
 drop if trip_MPH > 75
-drop if passenger_count > 5
+drop if passenger_count > 4
 
 tempfile taxi
-save taxi.dta
+save taxi.dta, replace
 clear
 
 * c.) Merge Taxi data with Weather Data
@@ -171,14 +188,8 @@ merge 1:m pickup_date using taxi.dta
 
 xi: regress trip_MPH i.condition passenger_count
 
-*taxi.predict <- cbind(taxi, predict(taxi.mod, interval = 'confidence'))
-
-*-----------------------------
-* 4.) Plot the data 
-*-----------------------------
-
-lfit (passenger_count trip_MPH)
-
+*ssc inst sepscatter
+sepscatter trip_MPH passenger_count , sep(condition) mc(red blue) addplot(qfitci trip_MPH passenger_count if condition=="cloudy_rain", lc(red) || qfitci trip_MPH passenger_count if condition=="sunny", lc(blue)) legend(order(1 2))
 
 
 
