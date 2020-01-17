@@ -1,0 +1,31 @@
+# Load python/anaconda3.6 module
+module load python/anaconda3.6
+
+# Get list of already set up environments
+conda env list
+
+# Create an environment with specified python version
+conda create -n py36 python=3.6 anaconda
+
+# Create environment without prompting for yes/no and quiet mode
+
+conda create -y -q -n py36 python=3.6
+
+# Activate an already setup environment
+conda activate envName
+
+# Close the conda environment
+conda deactivate envName
+
+# Install packages
+conda install packagename
+
+# Delete a no longer used environemnt
+
+conda remove -n envName --all
+
+## Export environment 
+
+conda activate envName
+conda env export > environment.yml
+
