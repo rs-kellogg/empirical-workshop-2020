@@ -50,7 +50,7 @@ for word in lyrics.split(" "):
 
 count = 0
 while count < 10:
-    print(".", end="") # The "end" keyword argument here prevents the print function from emitting a newline character
+    print(".")
     count += 1 # Once this value hits 10, the condition "count < 10" becomes false and the while statement stops executing.
 
 # Finally, if you need to stop a for or while loop early, you can use the

@@ -40,7 +40,3 @@ print(stdev(data))
 import os
 print("The value of the PATH environment variable is", os.getenv("PATH"))
 
-# one very useful package is http.server, which you can use to run a local web
-# server! Very handy for browsing documentation, building a web app, or even if
-# you want to allow other computers on the same network as you to download files
-# from your computer.

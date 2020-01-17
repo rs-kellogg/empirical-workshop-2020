@@ -67,7 +67,7 @@ print("The goat's name is", another_dict['goat'])
 # {'sheep': 'Sally', 'llama': 'Larry', 'goat': 'Gary'}
 
 my_last_dict = another_dict
-another_dict['sheep'] = 'kabob'
+another_dict['sheep'] = 'Curly'
 print(my_last_dict)
 
 # We can persuade python to make a separate copy
@@ -75,5 +75,5 @@ print(my_last_dict)
 my_really_last_dict = dict(another_dict)
 # my_really_last_dict = another_dict.copy() # does the same job
 
-another_dict['goat'] = 'bbq'
+another_dict['goat'] = 'Moe'
 print(my_really_last_dict)

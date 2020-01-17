@@ -47,7 +47,7 @@ do_something_then_print(capitalize, "hello world") # prints "HELLO WORLD"
 def print_champs():
     print("The", nba_champs, "are NBA champs!")
 
-nba_champs = "Cavs"
+nba_champs = "Raptors"
 
 print_champs()
 

@@ -1,4 +1,6 @@
-# Python class object attributes
+#!/usr/bin/env python2.7
+
+# 06-class-attributes-1.py
 
 # Here we define an attribute under the class `YourClass`
 # as well as an attribute within the function.
