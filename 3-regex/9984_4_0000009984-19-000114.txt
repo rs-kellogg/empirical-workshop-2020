@@ -1,0 +1,156 @@
+<SEC-DOCUMENT>0000009984-19-000114.txt : 20191212
+<SEC-HEADER>0000009984-19-000114.hdr.sgml : 20191212
+<ACCEPTANCE-DATETIME>20191212152814
+ACCESSION NUMBER:		0000009984-19-000114
+CONFORMED SUBMISSION TYPE:	4
+PUBLIC DOCUMENT COUNT:		1
+CONFORMED PERIOD OF REPORT:	20191210
+FILED AS OF DATE:		20191212
+DATE AS OF CHANGE:		20191212
+
+REPORTING-OWNER:	
+
+	OWNER DATA:	
+		COMPANY CONFORMED NAME:			MANGUM MYLLE H
+		CENTRAL INDEX KEY:			0001175893
+
+	FILING VALUES:
+		FORM TYPE:		4
+		SEC ACT:		1934 Act
+		SEC FILE NUMBER:	001-04801
+		FILM NUMBER:		191281791
+
+	MAIL ADDRESS:	
+		STREET 1:		3231 S E SIXTH AVENUE
+		CITY:			TOPEKA
+		STATE:			KS
+		ZIP:			66607
+
+ISSUER:		
+
+	COMPANY DATA:	
+		COMPANY CONFORMED NAME:			BARNES GROUP INC
+		CENTRAL INDEX KEY:			0000009984
+		STANDARD INDUSTRIAL CLASSIFICATION:	MISCELLANEOUS FABRICATED METAL PRODUCTS [3490]
+		IRS NUMBER:				060247840
+		STATE OF INCORPORATION:			DE
+		FISCAL YEAR END:			1231
+
+	BUSINESS ADDRESS:	
+		STREET 1:		123 MAIN ST
+		CITY:			BRISTOL
+		STATE:			CT
+		ZIP:			06010
+		BUSINESS PHONE:		8605837070
+
+	MAIL ADDRESS:	
+		STREET 1:		123 MAIN ST
+		CITY:			BRISTOL
+		STATE:			CT
+		ZIP:			06010
+
+	FORMER COMPANY:	
+		FORMER CONFORMED NAME:	ASSOCIATED SPRING CORP
+		DATE OF NAME CHANGE:	19760518
+</SEC-HEADER>
+<DOCUMENT>
+<TYPE>4
+<SEQUENCE>1
+<FILENAME>edgar.xml
+<DESCRIPTION>PRIMARY DOCUMENT
+<TEXT>
+<XML>
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2019-12-10</periodOfReport>
+
+    <issuer>
+        <issuerCik>0000009984</issuerCik>
+        <issuerName>BARNES GROUP INC</issuerName>
+        <issuerTradingSymbol>B</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001175893</rptOwnerCik>
+            <rptOwnerName>MANGUM MYLLE H</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>BARNES GROUP INC.</rptOwnerStreet1>
+            <rptOwnerStreet2>123 MAIN STREET</rptOwnerStreet2>
+            <rptOwnerCity>BRISTOL</rptOwnerCity>
+            <rptOwnerState>CT</rptOwnerState>
+            <rptOwnerZipCode>06010</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+            <isOfficer>0</isOfficer>
+            <isTenPercentOwner>0</isTenPercentOwner>
+            <isOther>0</isOther>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2019-12-10</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>P</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+                <footnoteId id="F1"/>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>34.1689</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>60.8979</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>22291.39</value>
+                    <footnoteId id="F2"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value></value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Common stock was purchased using earned dividends from the Non-employee Director Deferred Stock Plan (NEDDSP).</footnote>
+        <footnote id="F2">Includes (a) a balance of 432 Restricted Stock Units granted 2/13/2019, which are subject to forfeiture if certain events occur and payable in shares of common stock on or as soon as practicable following the applicable vesting date, (b) 12,000 shares of deferred stock under the Non-Employee Director Deferred Stock Plan, which are payable in shares of common stock upon separation from service as a director, and (c) 9,859.39 shares of common stock.</footnote>
+    </footnotes>
+
+    <remarks></remarks>
+
+    <ownerSignature>
+        <signatureName>Patricia A. Bradley, pursuant to a Power of Attorney</signatureName>
+        <signatureDate>2019-12-12</signatureDate>
+    </ownerSignature>
+</ownershipDocument>
+</XML>
+</TEXT>
+</DOCUMENT>
+</SEC-DOCUMENT>
