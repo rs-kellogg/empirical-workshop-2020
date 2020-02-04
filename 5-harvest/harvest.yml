@@ -1,6 +1,6 @@
 # Create harvest.yml file
 # begin harvest.yml
-name: harvest_Feb2020_env
+name: harvestFeb2020_env
  
 channels:
   - conda-forge
