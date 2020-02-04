@@ -1,0 +1,22 @@
+# Create harvest.yml file
+# begin harvest.yml
+name: harvest_F2020
+ 
+channels:
+  - conda-forge
+  - anaconda
+  - defaults
+dependencies:
+  - anaconda
+  - pip
+  - beautifulsoup4 
+  - selenium 
+  - jupyter 
+
+ 
+# end harvest.yml
+ 
+# create conda environment
+#module load python/anaconda3.6
+#conda env create -f harvest.yml
+ 
