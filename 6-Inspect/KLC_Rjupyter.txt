@@ -1,0 +1,18 @@
+Type the following commands to install an R Jupyter notebook on KLC
+
+yes | conda create -n visual_env r-essentials r-base
+source activate visual_env
+
+yes | conda install -c r jupyter 
+yes | conda install -c r r-irkernel
+
+# Load required modules
+module load R/3.6.0
+module load firefox/62
+
+# within R
+R
+install.packages(c('rzmq','repr','IRkernel','IRdisplay’))
+IRkernel::installspec()
+
+jupyter notebook --browser=firefox
