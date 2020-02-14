@@ -12,7 +12,7 @@ module load firefox/62
 
 # within R
 R
-install.packages(c('rzmq','repr','IRkernel','IRdisplay’))
+install.packages(c('rzmq','repr','IRkernel','IRdisplay'))
 IRkernel::installspec()
 
 jupyter notebook --browser=firefox
