@@ -1,9 +1,4 @@
 db_connection:
   conn_str: 'sqlite://' # use for in-memory test
-  prefix: mssql+pymssql://
-  db_url: kdc02.kellogg.northwestern.edu
-  db_name: Taxi_NYC
-  db_table: Temp
-  user: kellogg\<netid>
-  password: password
+
 
