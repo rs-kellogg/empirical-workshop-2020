@@ -1,0 +1,9 @@
+db_connection:
+  conn_str: 'sqlite://' # use for in-memory test
+  prefix: mssql+pymssql://
+  db_url: kdc02.kellogg.northwestern.edu
+  db_name: CoreLogic_Dev
+  db_table: Temp
+  user: kellogg\wkt406
+  password: 34@Schorndorf
+
