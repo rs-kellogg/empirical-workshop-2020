@@ -113,5 +113,5 @@ venv.bak/
 .idea/
 
 # Test data
-tests/data/output/
-tests/conf/dbuser.json
+tests/data/
+#tests/conf/dbuser.json

@@ -1,4 +1,0 @@
-db_connection:
-  conn_str: 'sqlite://' # use for in-memory test
-
-

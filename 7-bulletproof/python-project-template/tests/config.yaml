@@ -1,0 +1,7 @@
+db_connection:
+  type: "sqlite"
+  url: None
+  name: ":memory:"
+  user: None
+  password: None
+

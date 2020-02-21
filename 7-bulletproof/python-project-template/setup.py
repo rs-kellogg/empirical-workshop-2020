@@ -10,5 +10,8 @@ setup(
     description='Python template project',
     url='https://github.com/rs-kellogg/empirical-workshop-2020/tree/master/7-bulletproof',
     packages=find_packages(include=['kelloggrs', 'kelloggrs.*']),
-    include_package_data=True
+    include_package_data=True,
+    entry_points = {
+       'console_scripts': ['textmetrics=kelloggrs.textmetrics:main']
+    }
 )

@@ -10,17 +10,21 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 
 @pytest.fixture
 def config():
-    with open(Path(f"{dir_path}/conf/dbuser.yaml")) as conf_file:
+    with open(Path(f"{dir_path}/config.yaml")) as conf_file:
         conf = yaml.load(conf_file, Loader=yaml.FullLoader)
         return conf
 
 
 @pytest.fixture
 def conn_str(config):
-    db = config["db_connection"]
-    conn_str = f"{db['prefix']}{db['user']}:{quote(db['password'])}@{db['db_url']}"
-    return "sqlite:///:memory:"
-    return conn_str
+    try:
+        db = config["db_connection"]
+        if db['type'] == "sqlite" and db['name'] == ":memory:":
+            return "sqlite:///:memory:"
+        conn_str = f"{db['type']}{db['user']}:{quote(db['password'])}@{db['url']}"
+        return conn_str
+    except KeyError:
+        return "sqlite:///:memory:"
 
 
 @pytest.fixture
