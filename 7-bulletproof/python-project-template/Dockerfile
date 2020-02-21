@@ -11,5 +11,5 @@ RUN echo "source activate $(head -1 /tmp/environment.yml | cut -d' ' -f2)" > ~/.
 ENV PATH /opt/conda/envs/$(head -1 /tmp/environment.yml | cut -d' ' -f2)/bin:$PATH
 
 COPY --chown=root:root ./kelloggrs /home/root/work/kelloggrs
+COPY --chown=root:root ./sql /home/root/work/sql
 COPY --chown=root:root ./setup.py /home/root/work/setup.py
-RUN pip install .
