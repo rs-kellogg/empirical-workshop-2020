@@ -12,6 +12,6 @@ setup(
     packages=find_packages(include=['kelloggrs', 'kelloggrs.*']),
     include_package_data=True,
     entry_points = {
-       'console_scripts': ['textmetrics=kelloggrs.textmetrics:main']
+       'console_scripts': ['load_data=kelloggrs.load_data:main']
     }
 )

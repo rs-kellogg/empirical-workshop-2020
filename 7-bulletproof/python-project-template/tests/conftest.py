@@ -32,3 +32,8 @@ def db_engine(conn_str):
     print(conn_str)
     engine = create_engine(conn_str)
     return engine
+
+
+@pytest.fixture
+def data_path():
+    return Path(dir_path) / "data/ciq_transcript_samples"
