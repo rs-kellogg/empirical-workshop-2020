@@ -39,7 +39,6 @@ def insert_records(path, engine):
             c["transcriptid"] = transcript_dict["transcriptid"]
             engine.execute(component_table.insert(), [c])
 
-
     return engine
 
 
