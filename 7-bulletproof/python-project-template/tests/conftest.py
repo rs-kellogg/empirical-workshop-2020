@@ -29,7 +29,6 @@ def conn_str(config):
 
 @pytest.fixture
 def db_engine(conn_str):
-    print(conn_str)
     engine = create_engine(conn_str)
     return engine
 

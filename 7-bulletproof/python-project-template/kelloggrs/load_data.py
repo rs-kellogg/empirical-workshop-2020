@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, Table, MetaData
 from pathlib import Path
 from urllib.parse import quote
 import argparse
@@ -16,15 +16,29 @@ def create_database(config):
     else:
         conn_str = f"{db['type']}{db['user']}:{quote(db['password'])}@{db['url']}"
     engine = create_engine(conn_str)
-    sql = Path(config["sql_file"]).read_text()
-    result = engine.execute(sql)
+    sql = Path(config["create_transcript_sql"]).read_text()
+    engine.execute(sql)
+    sql = Path(config["create_component_sql"]).read_text()
+    engine.execute(sql)
+
+    return engine
 
 
 def insert_records(path, engine):
+    print(path)
+    meta = MetaData(bind=engine)
+    transcript = Table('Transcript', meta, autoload=True, autoload_with=engine)
+    component = Table('Component', meta, autoload=True, autoload_with=engine)
+
     for json_file in path.glob('*.json'):
         text = json_file.read_text()
         transcript_dict = json.loads(text)
-        components = transcript_dict["components"]
+        components_dict = transcript_dict["components"]
+        transcript_dict = {key:value for key, value in transcript_dict.items() if key != "components"}
+        engine.execute(transcript.insert(), [transcript_dict])
+
+
+    return engine
 
 
 def main():
