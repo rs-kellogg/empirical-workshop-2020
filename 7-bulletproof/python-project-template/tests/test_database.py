@@ -11,10 +11,19 @@ def test_engine(db_engine):
     assert not conn.closed
 
 
-def test_create_table(db_engine):
-    sql = Path(f"{dir_path}/../sql/create_db.sql").read_text()
+def test_create_tables(db_engine, config):
+    sql = Path(config["create_transcript_sql"]).read_text()
     result = db_engine.execute(sql)
+    assert result.rowcount == -1
+
+    sql = Path(config["create_component_sql"]).read_text()
+    result = db_engine.execute(sql)
+    assert result.rowcount == -1
+
+
+def test_create_database(config):
+    load_data.create_database(config)
 
 
 def test_load_data(data_path):
-    load_data.create_db(data_path / "foo", None)
+    load_data.insert_records(data_path, None)

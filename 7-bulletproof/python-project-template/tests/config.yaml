@@ -5,3 +5,7 @@ db_connection:
   user: None
   password: None
 
+data_path: /Users/willthompson/Code/kellogg/empirical-workshop-2020/7-bulletproof/python-project-template/tests/data/ciq_transcript_samples
+
+create_transcript_sql: /Users/willthompson/Code/kellogg/empirical-workshop-2020/7-bulletproof/python-project-template/sql/create_transcript.sql
+create_component_sql: /Users/willthompson/Code/kellogg/empirical-workshop-2020/7-bulletproof/python-project-template/sql/create_component.sql

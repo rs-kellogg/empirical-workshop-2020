@@ -35,5 +35,5 @@ def db_engine(conn_str):
 
 
 @pytest.fixture
-def data_path():
-    return Path(dir_path) / "data/ciq_transcript_samples"
+def data_path(config):
+    return Path(config["data_path"])
