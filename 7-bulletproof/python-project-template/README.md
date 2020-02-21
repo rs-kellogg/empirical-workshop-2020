@@ -1,2 +1,1 @@
-# corelogic
-Code to import data into the CoreLogic database
+# Python Project Template
