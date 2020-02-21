@@ -38,3 +38,6 @@ def test_insert_records(config, data_path):
     row = result.fetchone()
     assert row["cnt"] == 34
 
+    result = engine.execute("select count(*) as cnt from Component")
+    row = result.fetchone()
+    assert row["cnt"] == 4448

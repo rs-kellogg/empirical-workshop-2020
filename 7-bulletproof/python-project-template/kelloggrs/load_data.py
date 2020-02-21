@@ -27,15 +27,18 @@ def create_database(config):
 def insert_records(path, engine):
     print(path)
     meta = MetaData(bind=engine)
-    transcript = Table('Transcript', meta, autoload=True, autoload_with=engine)
-    component = Table('Component', meta, autoload=True, autoload_with=engine)
+    transcript_table = Table('Transcript', meta, autoload=True, autoload_with=engine)
+    component_table = Table('Component', meta, autoload=True, autoload_with=engine)
 
     for json_file in path.glob('*.json'):
         text = json_file.read_text()
         transcript_dict = json.loads(text)
         components_dict = transcript_dict["components"]
         transcript_dict = {key:value for key, value in transcript_dict.items() if key != "components"}
-        engine.execute(transcript.insert(), [transcript_dict])
+        engine.execute(transcript_table.insert(), [transcript_dict])
+        for c in components_dict:
+            c["transcriptid"] = transcript_dict["transcriptid"]
+            engine.execute(component_table.insert(), [c])
 
 
     return engine
