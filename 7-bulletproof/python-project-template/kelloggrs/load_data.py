@@ -25,7 +25,6 @@ def create_database(config):
 
 
 def insert_records(path, engine):
-    print(path)
     meta = MetaData(bind=engine)
     transcript_table = Table('Transcript', meta, autoload=True, autoload_with=engine)
     component_table = Table('Component', meta, autoload=True, autoload_with=engine)
@@ -69,7 +68,8 @@ def main():
         if args.verbose:
             print(f"Loading configuration params from file: {args.config}")
         with open(Path(args.config)) as conf_file:
-            conf = yaml.load(conf_file, Loader=yaml.FullLoader)
+            config = yaml.load(conf_file, Loader=yaml.FullLoader)
+        engine = create_database(config)
     except FileNotFoundError:
         if args.verbose:
             print(f"Config file not found: {args.config}")
@@ -79,7 +79,7 @@ def main():
     try:
         if args.verbose:
             print(f"Loading data from directory: {args.path}")
-        insert_records(Path(args.path), None)
+        insert_records(Path(args.path), engine)
     except Exception:
         if args.verbose:
             print(f"Something bad happened trying to create database")
